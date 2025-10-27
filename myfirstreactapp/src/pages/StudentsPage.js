@@ -1,13 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import StudentAddFormComponent from "../components/StudentAddFormComponent"
 
 const StudentsPage = () => {
 
     const [students, setStudents] = useState([]);
 
+    useEffect(() => {
+
+        setTimeout(() => {
+            let student = {
+                roll_number: 1234,
+                student_name: "Kamil"
+            }
+            setStudents([...students,student]);
+        }, 5000)
+
+    }, [])
 
     return(
         
-        <table>
+    <>
+    <center>
+        <StudentAddFormComponent />
+        <table border={1}>
             <thead>
                 <th>Roll Number</th>
                 <th>Name</th>
@@ -19,8 +34,8 @@ const StudentsPage = () => {
                 {students.map((std, index) => {
                     return (
                         <tr>
-                            <td>123</td>
-                            <td>Hayyan g</td>
+                            <td>{std.roll_number}</td>
+                            <td>{std.student_name}</td>
                             <td>
                                 <button>Delete</button>
                             </td>
@@ -33,7 +48,9 @@ const StudentsPage = () => {
 
             : <h1>No student found</h1>
         }
-        </table>   
+        </table>
+    </center>
+    </>
     )
 }
 
