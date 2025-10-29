@@ -6,23 +6,23 @@ const StudentsPage = () => {
     const [students, setStudents] = useState([]);
 
     useEffect(() => {
-
         setTimeout(() => {
             let student = {
                 roll_number: 1234,
                 student_name: "Kamil"
-            }
-            setStudents([...students,student]);
+            };
+            setStudents(prevStudents => [...prevStudents,student])
         }, 5000)
-
-    }, [])
+    },[])
 
     return(
         
     <>
     <center>
         <StudentAddFormComponent />
-        <table border={1}>
+        <table border={1} style={{
+            marginTop: 30
+        }}>
             <thead>
                 <th>Roll Number</th>
                 <th>Name</th>
