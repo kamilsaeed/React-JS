@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const StudentAddFormComponent = () => {
+function StudentAddFormComponent (props) {
 
     const [student, setStudent] = useState({
         rollNumber: 0,
@@ -56,7 +56,9 @@ const StudentAddFormComponent = () => {
             </div>
 
             <div>
-                <button>Add Student</button>
+                <button onClick={() => {
+                    props.addstudent(student)
+                }}>Add Student</button>
             </div>
         </center>
     )

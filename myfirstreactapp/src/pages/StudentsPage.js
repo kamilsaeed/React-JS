@@ -5,11 +5,15 @@ const StudentsPage = () => {
 
     const [students, setStudents] = useState([]);
 
+    const AddStudenttoState = (student) => {
+        setStudents([...students,student])
+    }
+
     useEffect(() => {
         setTimeout(() => {
             let student = {
-                roll_number: 1234,
-                student_name: "Kamil"
+                rollNumber: 1234,
+                studentName: "Kamil"
             };
             setStudents(prevStudents => [...prevStudents,student])
         }, 5000)
@@ -19,7 +23,7 @@ const StudentsPage = () => {
         
     <>
     <center>
-        <StudentAddFormComponent />
+        <StudentAddFormComponent addstudent = {AddStudenttoState}/>
         <table border={1} style={{
             marginTop: 30
         }}>
@@ -34,8 +38,8 @@ const StudentsPage = () => {
                 {students.map((std, index) => {
                     return (
                         <tr>
-                            <td>{std.roll_number}</td>
-                            <td>{std.student_name}</td>
+                            <td>{std.rollNumber}</td>
+                            <td>{std.studentName}</td>
                             <td>
                                 <button>Delete</button>
                             </td>
